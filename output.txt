@@ -1,0 +1,24 @@
+
+User
+  should respond to #count
+  should respond to #password
+  should respond to #username
+  should be valid
+  when password is too long
+    should not be valid
+  when username and password are maximally long
+    should be valid
+  when username is legal and password is empty
+    should be valid
+  when username is not present
+    should not be valid
+  when username is too long
+    should not be valid
+  when username is not unique
+    should not be valid
+
+Finished in 1.18 seconds
+10 examples, 0 failures
+
+Randomized with seed 3792
+
