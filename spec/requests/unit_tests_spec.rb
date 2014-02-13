@@ -40,6 +40,7 @@ describe User do
 		before do
 			@user.username = "user1"
 			@user.password = ""
+		end
 		it { should be_valid}
 	end
 
