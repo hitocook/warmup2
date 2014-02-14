@@ -8,7 +8,7 @@ describe User do
 
 	subject { @user }
 
-	it { should respond_to(:user1) }
+	it { should respond_to(:username) }
 	it { should respond_to(:password) }
 	it { should respond_to(:count)  }
 	it { should be_valid }

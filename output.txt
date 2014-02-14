@@ -1,24 +1,35 @@
 
 User
-  should respond to #username
-  should respond to #password
-  should be valid
   should respond to #count
-  when username is legal and password is empty
+  should respond to #password
+  should respond to #user1 (FAILED - 1)
+  should be valid
+  when password >128
+    should not be valid
+  when username >128
+    should not be valid
+  when username is valid but password is not present
     should be valid
-  when username and password are maximally long
+  when username is duplicate
+    should not be valid
+  when username is empty
+    should not be valid
+  when username and password are very long but valid
     should be valid
-  when username is not present
-    should not be valid
-  when username is not unique
-    should not be valid
-  when password is too long
-    should not be valid
-  when username is too long
-    should not be valid
 
-Finished in 1.15 seconds
-10 examples, 0 failures
+Failures:
 
-Randomized with seed 57139
+  1) User should respond to #user1
+     Failure/Error: it { should respond_to(:user1) }
+       expected #<User id: nil, password_digest: "$2a$10$oBHdgmhvU0bSMvesCZNwUeGTk73C6wzocJfyR.QP.fW8...", created_at: nil, updated_at: nil, count: nil, username: "user0"> to respond to :user1
+     # ./spec/requests/unit_tests_spec.rb:11:in `block (2 levels) in <top (required)>'
+
+Finished in 1.21 seconds
+10 examples, 1 failure
+
+Failed examples:
+
+rspec ./spec/requests/unit_tests_spec.rb:11 # User should respond to #user1
+
+Randomized with seed 39254
 
