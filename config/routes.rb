@@ -1,8 +1,6 @@
 LoginApp::Application.routes.draw do
 
-  resources :users, :defaults => { :format => "json" }
-
-  root 'users#new'
+  root 'users#client'
 
   match '/users/login', to: 'users#login', via: :post
   match '/users/add',   to: 'users#add',   via: :post

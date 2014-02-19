@@ -8,8 +8,8 @@ class UsersController < ApplicationController
 	MAX_USERNAME_LENGTH = 128
 	MAX_PASSWORD_LENGTH = 128
 
-  def new
-  	@user = User.new
+
+  def client
   end
   
   def add
@@ -31,10 +31,11 @@ class UsersController < ApplicationController
   
   def login
   	@user = User.find_by_username(params[:user])
-  	if @user && @user.authenticate(params[:password])
-  		@user.count += 1 
-  		@user.save
-  		render :json => {errCode: SUCCESS, count: @user.count}
+    password = params[:password]
+    if @user && params[:password].to_s == @user.password.to_s
+      @user.count += 1 
+      @user.save
+      render :json => {errCode: SUCCESS, count: @user.count}
   	else
   		render :json => {errCode: ERR_BAD_CREDENTIALS}
   	end
@@ -56,8 +57,6 @@ class UsersController < ApplicationController
               output: result,
               totalTests: total_test.to_i }
   end
-  
-  
   
 
 
